@@ -21,6 +21,7 @@ void game_start();
 int play();
 void re_draw_bord();
 void win_lose();
+void game_clear();
 
 
 char bord_lable[9] = { '1','2','3','4','5','6','7','8','9' };
@@ -31,11 +32,27 @@ bool game_condition = true;
 
 
 int main()
-{   
-    game_start();
-    re_draw_bord();
-    win_lose();
+{ 
+    int x = 1;
+    while (x) {
+        game_clear();
+        game_start();
+        re_draw_bord();
+        win_lose();
+        cout << "to exiet priss 0 else press any number : ";
+        cin >> x;
+    }
 }
+
+void game_clear() {
+    char a = '1';
+    for (int i = 0; i < 9; i++){
+        bord_lable[i] = a;
+        a++;
+    }
+}
+
+
 
 void win_lose() {
     if (play() == 1)
